@@ -10,6 +10,7 @@ class Homescreen extends StatefulWidget {
 }
 
 class _HomescreenState extends State<Homescreen> {
+  List name = ["Shahd","Ahmed","Yahya","nour","ramy","doha","reem"];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,17 +28,39 @@ class _HomescreenState extends State<Homescreen> {
             style:TextStyle(fontSize: 30,fontFamily: 'Serif-SemiBoldItalic.ttf')),
         ),],
       ),
-      body: ListView(children: [
-        //Image.asset("assets/images/flutter.png")
-       Image.network("https://picsum.dev/image/15/view")
+      body: Column(children: [
+        Expanded(
+          flex: 2,
+          child: Container(
+            color: Colors.red,
+            width: 100,
+            height: 100,
+          ),
+        ),
+        Expanded(
+          flex: 2,
+          child: Container(
+            color: Colors.yellow,
+            width: 100,
+            height: 100,
+          ),
+        ),
+        Expanded(
+          child: Container(
+            color: Colors.green,
+            width: 100,
+            height: 100,
+          ),
+        ),
       ],),
-      floatingActionButton:
-      FloatingActionButton(
-        backgroundColor: Colors.cyanAccent,
-          child: Icon(Icons.add,color: Colors.white,),
-          onPressed: (){}
-      ),
-      bottomNavigationBar: Container(height: 70,color: Color(0xFF2C3E50)),
+    floatingActionButton:
+    FloatingActionButton(
+    backgroundColor: Colors.cyanAccent,
+    child: Icon(Icons.add,color: Colors.white,),
+    onPressed: (){}
+    ),
+    bottomNavigationBar: Container(height: 70,color: Color(0xFF2C3E50)),
     );
+    }
   }
-}
+
