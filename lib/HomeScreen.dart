@@ -1,66 +1,68 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:test_sprints/navbar%20pages/home.dart';
+import 'package:test_sprints/navbar%20pages/profile.dart';
+import 'package:test_sprints/navbar%20pages/settings.dart';
 
 class Homescreen extends StatefulWidget {
   const Homescreen({super.key});
-
+  static const String routeName = 'Homescreen';
   @override
   State<Homescreen> createState() => _HomescreenState();
 }
 
 class _HomescreenState extends State<Homescreen> {
-  List name = ["Shahd","Ahmed","Yahya","nour","ramy","doha","reem"];
+  int selectedIndex = 0 ;
+  List<Widget> Pages =[
+    Home(),
+    Profile(),
+    Settings(),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Container(width: 300,color: Colors.white,),
+      drawer: Container(
+        color: Colors.white,
+        width: MediaQuery.of(context).size.width * 0.8,
+        child: ListView(
+          children: [
+            SizedBox(height: 200,),
+          ListTile(
+            title: Text("Contact us"),
+            subtitle:Text("Contact info") ,
+            trailing: Icon(Icons.contact_mail),
+            ),
+            ListTile(
+              onTap: (){
+                Navigator.of(context).pop();
+                Navigator.of(context).pop();
+              },
+              title: Text("Log out"),
+              subtitle:Text("Contact info") ,
+              trailing: Icon(Icons.logout),
+            )
+          ],
+        ),
+      ),
       appBar: AppBar(
-        backgroundColor: Colors.cyanAccent,
-        centerTitle: true,
-        title: Text("Title",
-            style:TextStyle(fontSize: 30,fontFamily: 'Serif-SemiBoldItalic.ttf')
-
+        backgroundColor: Colors.blue,
       ),
-        actions: [Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text("Action",
-            style:TextStyle(fontSize: 30,fontFamily: 'Serif-SemiBoldItalic.ttf')),
-        ),],
-      ),
-      body: Column(children: [
-        Expanded(
-          flex: 2,
-          child: Container(
-            color: Colors.red,
-            width: 100,
-            height: 100,
-          ),
-        ),
-        Expanded(
-          flex: 2,
-          child: Container(
-            color: Colors.yellow,
-            width: 100,
-            height: 100,
-          ),
-        ),
-        Expanded(
-          child: Container(
-            color: Colors.green,
-            width: 100,
-            height: 100,
-          ),
-        ),
-      ],),
-    floatingActionButton:
-    FloatingActionButton(
-    backgroundColor: Colors.cyanAccent,
-    child: Icon(Icons.add,color: Colors.white,),
-    onPressed: (){}
-    ),
-    bottomNavigationBar: Container(height: 70,color: Color(0xFF2C3E50)),
+      body: Pages [selectedIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: selectedIndex,
+          onTap: onItemTapped,
+          items:[
+            BottomNavigationBarItem(label: "Home" , icon:Icon (Icons.home)),
+            BottomNavigationBarItem(label: "Profile", icon: Icon(Icons.person)),
+            BottomNavigationBarItem(label: "Settings", icon: Icon(Icons.settings)),
+          ]),
     );
-    }
   }
+  onItemTapped (int index){
+    selectedIndex = index ;
+    setState(() {
 
+    });
+  }
+}
