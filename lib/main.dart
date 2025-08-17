@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:test_sprints/HomeScreen.dart';
 import 'package:test_sprints/LoginScreen.dart';
+import 'package:test_sprints/animation_screen.dart';
+
+
 
 
 void main() {
@@ -17,10 +20,11 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
           primarySwatch: Colors.blue, fontFamily: 'Serif-SemiBoldItalic.ttf'),
-      initialRoute: Loginscreen.routeName,
+      initialRoute: AnimationScreen.routeName,
       routes: {
         Loginscreen.routeName: (context) => const Loginscreen(),
         Homescreen.routeName: (context) => const Homescreen(),
+        AnimationScreen.routeName : (context) => AnimationScreen(),
       },
     );
   }
